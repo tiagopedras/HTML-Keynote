@@ -46,8 +46,13 @@ $(function() {
         slideTo(selectors.index($(this)));
     });
     
-    $(window).on('hashchange', function() {
-        slideToId(window.location.hash);
+    $(window).on('hashchange', function(event) {
+        if (window.location.hash == "#"+slides.eq(currentSlide).attr("id")) {
+            if (event.preventDefault) event.preventDefault();
+            event.returnValue = false;
+        } else {
+            slideToId(window.location.hash);
+        }
     });
 
 
@@ -86,7 +91,6 @@ $(function() {
         }
         selectors.removeClass("selected").eq(i).addClass("selected");
         currentSlide = i;
-
         document.location.hash = (typeof slides.eq(currentSlide).attr("id") != "undefined") ? "#" + slides.eq(currentSlide).attr("id") : "";
     }
     
