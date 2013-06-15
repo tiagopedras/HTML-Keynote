@@ -129,8 +129,9 @@
          slideTo(0);
          
          
-         $(window).on("scrollDirection", function() {
-             if (window.console) console.debug("OK");
+         $(window).on("scrollDirection", function(e) {
+             if (animationStatus == 0 && e.string == "down") slideToNext();
+             else if (animationStatus == 0 && e.string == "up") slideToPrevious();
          });
         
     });
