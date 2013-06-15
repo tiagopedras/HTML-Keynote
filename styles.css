@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+}
+
+#main {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide .bottom_content {
+    position: absolute;
+    bottom: 20px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+
+
+
+#selectors {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    z-index: 3;
+}
+
+#selectors li {
+    cursor: pointer;
+}
+
+#selectors li.selected {
+    color: #999;
+}

@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <div id="main">
+    <section class="slide">
+      <div class="bottom_content">
+        <h1>Big long title 1</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="bottom_content">
+        <img src="http://placehold.it/1000x400" alt="">
+        <h1>Big long title 2</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="bottom_content">
+        <h1>Big long title 3</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="bottom_content">
+        <img src="http://placekitten.com/800/400" alt="">
+        <h1>Big long title 4</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="bottom_content">
+        <h1>Big long title 5</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="bottom_content">
+        <h1>Big long title 6</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+  </div>
+  
+  <nav id="selectors">
+    <ol>
+      <li>Slide</li>
+      <li>Slide</li>
+      <li>Slide</li>
+      <li>Slide</li>
+      <li>Slide</li>
+      <li>Slide</li>
+    </ol>
+  </nav>
+  
+  
+  <!-- JS -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+         
+         var slides = $('#main .slide'),
+             selectors = $('#selectors li'),
+             currentSlide = null,
+             totalSlides = slides.length,
+             animationStatus = 0;
+         
+         
+         selectors.on("click", function() {
+             slideTo(selectors.index($(this)));
+         });
+         
+         
+  /*
+         function slideTo(i) {
+             if (currentSlide != null) {
+                 if (window.console) console.debug("crossfading…");
+                 slides.eq(currentSlide).fadeOut(400, function() {
+                     slides.eq(i).fadeIn();
+                 });
+             } else {
+                 if (window.console) console.debug("fading in…");
+                 slides.eq(i).fadeIn();
+             }
+             selectors.removeClass("selected").eq(i).addClass("selected");
+             currentSlide = i;
+         }
+  */
+         function slideTo(i) {
+             animationStatus = 1;
+             
+             function slideIn(el) {
+                 var content = el.find(".bottom_content");
+                 if (window.console) console.debug(content);
+                 setTimeout(function() { content.css({ "opacity": 0, "bottom": -50 }); }, 0);
+                 setTimeout(function() { el.show();                         }, 0);
+                 setTimeout(function() {
+                     content.animate({
+                         "opacity": 1,
+                         "bottom": "20px"
+                     }, 400, null, function() {
+                         setTimeout(function() { animationStatus = 0; }, 500);
+                     });
+                 }, 0);
+             }
+         
+             if (currentSlide != null) {
+                 slides.eq(currentSlide).fadeOut(400, function() {
+                     slideIn(slides.eq(i));
+                 });
+             } else {
+                 slideIn(slides.eq(i));
+             }
+             selectors.removeClass("selected").eq(i).addClass("selected");
+             currentSlide = i;
+         }
+         
+         function slideToPrevious() {
+             if (currentSlide > 0)
+                slideTo(currentSlide - 1);
+             else 
+                slideTo(totalSlides - 1);
+         }
+         
+         function slideToNext() {
+             if (currentSlide < totalSlides-1)
+                slideTo(currentSlide + 1);
+             else 
+                slideTo(0);
+         }
+         
+         
+         slideTo(0);
+         
+         
+         
+         
+        //HORIZONTAL SCROLL
+        function handle(delta) {
+            if (typeof window.pageXOffset != undefined && typeof window.pageXOffset != "undefined") {
+                var offsetX = window.pageXOffset;
+            } else {
+                var offsetX = document.documentElement.scrollLeft;
+            }
+            
+            //console.log(delta);
+            
+        	if (delta < 0) {
+                console.debug("down");
+                if (animationStatus == 0) slideToNext();
+        	} else {
+                console.debug("up");
+                if (animationStatus == 0) slideToPrevious();
+            }
+        }
+        
+        function wheel(event) {
+        	var delta = 0;
+        	if (!event) event = window.event;
+    
+        	if (event.axis == 2 || event.wheelDeltaY || event.y) {
+        	    
+            	if (event.wheelDeltaY) {
+            		delta = event.wheelDeltaY/120; 
+            	} else if (event.wheelDelta) {
+            		delta = event.wheelDelta/120; 
+            	} else if (event.detail) {
+            		delta = -event.detail/3;
+            	}
+            	
+            	//DO THE ANIMATION
+            	if (delta != 0) handle(delta);
+            
+            	//PREVENT DEFAULT
+                if (event.preventDefault) event.preventDefault();
+            	event.returnValue = false;
+            }
+        }
+
+        if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
+        window.onmousewheel = document.onmousewheel = wheel;
+        
+    });
+
+  </script>
+
+
+
+
+
+
+</body>
+</html>
