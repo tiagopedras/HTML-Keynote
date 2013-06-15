@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>HTML Keynote V0.1 - made by TPWD</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
@@ -12,54 +12,66 @@
 <body>
 
   <div id="main">
-    <section class="slide">
+    <section class="slide" id="intro">
       <div class="bottom_content">
-        <h1>Big long title 1</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <hgroup>
+          <h1>HTML Keynote V0.1</h1>
+          <h3>made by TPWD</h3>
+        </hgroup>
+        <p>This demo was created as a personal challenge after the 2013 Mac Pro website release.</p>
+        <p>This first version only mimics the main navigation style, using the mouse scroll or the selectors on the right. Next version will attempt the video synchronisation feature. </p> 
+        <hr>
+        <p><a href="https://github.com/tiagopedras/HTML-Keynote">Download from GitHub</a> and follow <a href="https://twitter.com/TPWDpt">@TPWDpt</a> on Twitter.</p>
+      </div>
+    </section>
+    <section class="slide" id="structure">
+      <div class="bottom_content">
+        <h1>Main structure</h1>
+        <p>The main structure is composed of a 100% width and height div, in a 100% tall html and body tags.</p>
+        <p>The #main tag has relative positioning to hold all of the absolute positioned slide sections which are using the .slide class.</p>
+        <p>Most of the content you'll see here is positioned inside an inner tag with the .bottom_content class.</p>
+      </div>
+    </section>
+    <section class="slide" id="content">
+      <div class="bottom_content">
+        <h1>Content</h1>
+        <p>You can use all sorts of content inside each slide. And apart from the basic structure and positioning CSS you can position elements slide the slide as you wish.</p>
+        <img src="http://placekitten.com/1000/300" alt="">
+        <p>Each slide is composed of &lt;div&gt; with the .bottom_content class that holds the title and description to the bottom. This is optional and editable although there are predefined animations for the elements inside this tag (bottom move and fade in).</p>
+      </div>
+    </section>
+    <section class="slide" id="images">
+      <img src="http://placekitten.com/800/400" alt="" class="background_image">
+      <div class="bottom_content">
+        <h1>Large images</h1>
+        <p>Although you could use a background-image in any section, you can also use the .slide container to insert more content, like this image for example.</p>
+        <p>It's not as easy to control if you wish to achieve a fully covered effect but very helpful if it's an image that will blend with the background.</p>
       </div>
     </section>
     <section class="slide">
       <div class="bottom_content">
-        <img src="http://placehold.it/1000x400" alt="">
-        <h1>Big long title 2</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1>Navigation</h1>
+        <p>The side navigation should be manually created with as many items as the slides. It might be advisable to create them dynamically according to the slides themselves.</p>
+        <p>Urls are using the slide's ids but the navigation labels are independent. You can write what you want.</p>
       </div>
     </section>
     <section class="slide">
       <div class="bottom_content">
-        <h1>Big long title 3</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </section>
-    <section class="slide">
-      <div class="bottom_content">
-        <img src="http://placekitten.com/800/400" alt="">
-        <h1>Big long title 4</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </section>
-    <section class="slide">
-      <div class="bottom_content">
-        <h1>Big long title 5</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </section>
-    <section class="slide">
-      <div class="bottom_content">
-        <h1>Big long title 6</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1>Suggestions</h1>
+        <p>Do you have a suggestion for this project? We're more than glad to improve this!</p>
+        <p>Send it over in <a href="https://twitter.com/intent/tweet">a tweet</a> or visit our website at <a href="http://tpwd.pt/">http://tpwd.pt/</a>.</p>
       </div>
     </section>
   </div>
   
   <nav id="selectors">
     <ol>
-      <li>Slide</li>
-      <li>Slide</li>
-      <li>Slide</li>
-      <li>Slide</li>
-      <li>Slide</li>
-      <li>Slide</li>
+      <li>Intro</li>
+      <li>Structure</li>
+      <li>Content</li>
+      <li>Images</li>
+      <li>Navigation</li>
+      <li>Suggestions</li>
     </ol>
   </nav>
   
@@ -67,79 +79,7 @@
   <!-- JS -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="jquery.scrollDirection.js"></script>
-  <script type="text/javascript">
-    $(function() {
-         
-         var slides = $('#main .slide'),
-             selectors = $('#selectors li'),
-             currentSlide = null,
-             totalSlides = slides.length,
-             animationStatus = 0;
-         
-         
-         selectors.on("click", function() {
-             slideTo(selectors.index($(this)));
-         });
-         
-         
-         function slideTo(i) {
-             animationStatus = 1;
-             
-             function slideIn(el) {
-                 var content = el.find(".bottom_content");
-                 if (window.console) console.debug(content);
-                 setTimeout(function() { content.css({ "opacity": 0, "bottom": -50 }); }, 0);
-                 setTimeout(function() { el.show();                         }, 0);
-                 setTimeout(function() {
-                     content.animate({
-                         "opacity": 1,
-                         "bottom": "20px"
-                     }, 400, null, function() {
-                         setTimeout(function() { animationStatus = 0; }, 500);
-                     });
-                 }, 0);
-             }
-         
-             if (currentSlide != null) {
-                 slides.eq(currentSlide).fadeOut(400, function() {
-                     slideIn(slides.eq(i));
-                 });
-             } else {
-                 slideIn(slides.eq(i));
-             }
-             selectors.removeClass("selected").eq(i).addClass("selected");
-             currentSlide = i;
-         }
-         
-         function slideToPrevious() {
-             if (currentSlide > 0)
-                slideTo(currentSlide - 1);
-             else 
-                slideTo(totalSlides - 1);
-         }
-         
-         function slideToNext() {
-             if (currentSlide < totalSlides-1)
-                slideTo(currentSlide + 1);
-             else 
-                slideTo(0);
-         }
-         
-         
-         slideTo(0);
-         
-         
-         $(window).on("scrollDirection", function(e) {
-             if (animationStatus == 0 && e.string == "down") slideToNext();
-             else if (animationStatus == 0 && e.string == "up") slideToPrevious();
-         });
-        
-    });
-
-  </script>
-
-
-
+  <script src="keynote.js"></script>
 
 
 

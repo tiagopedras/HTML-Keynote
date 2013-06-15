@@ -1,16 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+/* BEGINS: ESSENTIAL CSS */
 
 html, body {
     height: 100%;
-}
-
-body {
-    background-color: black;
-    color: white;
-    font-family: Helvetica, Arial, Verdana, sans-serif;
 }
 
 #main {
@@ -30,19 +21,22 @@ body {
 
 .slide .bottom_content {
     position: absolute;
-    bottom: 20px;
-    width: 1000px;
-    margin: 0 auto;
+    bottom: 0;
 }
 
-
+.slide .background_image {
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+}
 
 
 #selectors {
     position: fixed;
-    right: 10px;
+    right: 20px;
     top: 50%;
     z-index: 3;
+    margin-top: -72px;
 }
 
 #selectors li {
@@ -52,3 +46,61 @@ body {
 #selectors li.selected {
     color: #999;
 }
+
+/* ENDS: ESSENTIAL CSS */
+
+
+
+
+
+/* BEGINS: DEMO CSS */
+/*
+You can delete everything from here to the bottom
+if you wish to start with a clean slate
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+}
+
+.slide .bottom_content {
+    left: 20px;
+    right: 20px;
+    bottom: 40px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#selectors ol {
+    list-style: none;
+    text-align: right;
+    line-height: 1.5em;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-bottom: 10px;
+    color: #
+}
+
+p {
+    line-height: 1.45em;
+}
+
+hr {
+    margin: 10px 0;
+    border: none;
+    height: 1px;
+    background-color: #666;
+}
+
+/* ENDS: DEMO CSS */
