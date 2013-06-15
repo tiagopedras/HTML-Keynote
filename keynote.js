@@ -24,83 +24,101 @@
 */
 $(function() {
      
-     ////////////////////////////
-     //VARS
-     var slides = $('#main .slide'),
-         selectors = $('#selectors li'),
-         currentSlide = null,
-         totalSlides = slides.length,
-         animationStatus = 0;
-     
-     
-     
-     
-     ////////////////////////////
-     //EVENTS
-     $(window).on("scrollDirection", function(e) {
-         if (animationStatus == 0 && e.string == "down") slideToNext();
-         else if (animationStatus == 0 && e.string == "up") slideToPrevious();
-     });
+    ////////////////////////////
+    //VARS
+    var slides = $('#main .slide'),
+        selectors = $('#selectors li'),
+        currentSlide = null,
+        totalSlides = slides.length,
+        animationStatus = 0;
 
-     selectors.on("click", function() {
-         slideTo(selectors.index($(this)));
-     });
-     
-     
-     
-     
-     ////////////////////////////
-     //FUNCTIONS
-     function slideTo(i) {
-         animationStatus = 1;
-         
-         function slideIn(el) {
-             var content = el.find(".bottom_content");
-             
-             //HIDE CONTENT
-             content.css({ "opacity": 0, "bottom": -50 });
-             
-             //SHOW CONTAINER
-             el.fadeIn();
-             
-             //ANIMATE TEXT CONTENT
-             content.animate({
-                 "opacity": 1,
-                 "bottom": "20px"
-             }, 400, null, function() {
-                 setTimeout(function() { animationStatus = 0; }, 500);
-             });
-             
-         }
 
-         if (currentSlide != null) {
-             slides.eq(currentSlide).fadeOut(400, function() {
-                 slideIn(slides.eq(i));
-             });
-         } else {
-             slideIn(slides.eq(i));
-         }
-         selectors.removeClass("selected").eq(i).addClass("selected");
-         currentSlide = i;
-     }
-     
-     function slideToPrevious() {
-         if (currentSlide > 0)
-            slideTo(currentSlide - 1);
-         else 
-            slideTo(totalSlides - 1);
-     }
-     
-     function slideToNext() {
-         if (currentSlide < totalSlides-1)
-            slideTo(currentSlide + 1);
-         else 
-            slideTo(0);
-     }
-     
-     
-     ////////////////////////////
-     //INIT
-     slideTo(0);
+
+
+    ////////////////////////////
+    //EVENTS
+    $(window).on("scrollDirection", function(e) {
+        if (animationStatus == 0 && e.string == "down") slideToNext();
+        else if (animationStatus == 0 && e.string == "up") slideToPrevious();
+    });
+
+    selectors.on("click", function() {
+        slideTo(selectors.index($(this)));
+    });
     
+    $(window).on('hashchange', function() {
+        slideToId(window.location.hash);
+    });
+
+
+
+
+    ////////////////////////////
+    //FUNCTIONS
+    function slideTo(i) {
+        animationStatus = 1;
+        
+        function slideIn(el) {
+            var content = el.find(".bottom_content");
+            
+            //HIDE CONTENT
+            content.css({ "opacity": 0, "bottom": -50 });
+            
+            //SHOW CONTAINER
+            el.fadeIn();
+            
+            //ANIMATE TEXT CONTENT
+            content.animate({
+                "opacity": 1,
+                "bottom": "20px"
+            }, 400, null, function() {
+                setTimeout(function() { animationStatus = 0; }, 500);
+            });
+            
+        }
+
+        if (currentSlide != null) {
+            slides.eq(currentSlide).fadeOut(400, function() {
+                slideIn(slides.eq(i));
+            });
+        } else {
+            slideIn(slides.eq(i));
+        }
+        selectors.removeClass("selected").eq(i).addClass("selected");
+        currentSlide = i;
+
+        document.location.hash = (typeof slides.eq(currentSlide).attr("id") != "undefined") ? "#" + slides.eq(currentSlide).attr("id") : "";
+    }
+    
+    function slideToPrevious() {
+        if (currentSlide > 0)
+           slideTo(currentSlide - 1);
+        else 
+           slideTo(totalSlides - 1);
+    }
+    
+    function slideToNext() {
+        if (currentSlide < totalSlides-1)
+           slideTo(currentSlide + 1);
+        else 
+           slideTo(0);
+    }
+    
+    function slideToId(id) {
+        var i = slides.index($(".slide"+id));
+        
+        if (i >= 0 && i < totalSlides) slideTo(i);
+        else {
+            slideTo(0);
+            window.location.hash = "";
+        }
+    }
+
+
+
+
+    ////////////////////////////
+    //INIT
+    if (window.location.hash != "") slideToId(window.location.hash); else slideTo(0);
+
 });
